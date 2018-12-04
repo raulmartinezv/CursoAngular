@@ -1,0 +1,58 @@
+<section class="container">
+  <form #studentForm="ngForm">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" [(ngModel)]="student.nombre"
+      id="nombre" placeholder="Escribir nombre" name="nombre">
+    </div>
+    <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" [(ngModel)]="student.apellidos"
+        id="apellidos" placeholder="Escribir apellidos" name="apellidos">
+      </div>    
+      <div class="form-group">
+          <label for="dni">Dni</label>
+          <input type="text" class="form-control" [(ngModel)]="student.dni"
+          id="dni" placeholder="Escribir dni" name="dni">
+        </div>        
+        <div class="form-group">
+            <label for="poblacion">Población</label>
+            <select class="form-control" id="poblacion" [(ngModel)]="student.poblacion"
+            name="poblacion">
+            <option>Barcelona</option>          
+            <option>Madrid</option>
+          </select>
+          </div>           
+          
+          <fieldset class="form-group">
+            <legend>Sexo</legend>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionSexo" id="optionHombre" value="Hombre"
+                [(ngModel)]="student.sexo">
+                Hombre
+              </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionSexo" id="optionMujer" value="Mujer"
+                  [(ngModel)]="student.sexo">
+                  Mujer
+                </label>
+              </div>            
+          </fieldset>
+
+          <fieldset class="form-group">
+              <legend>Hobbies</legend>
+              <div *ngFor="let hobbie of hobbiesCheckboxes">
+                  <label>
+                      <input type="checkbox"
+                             name="hobbies"
+                             value="{{hobbie.value}}"
+                             [(ngModel)]="hobbie.checked"/>
+                      {{hobbie.name}}
+                  </label>
+              </div>          
+            </fieldset>          
+          <button type="button" (click)="add()" class="btn btn-primary">Submit</button>
+  </form>
